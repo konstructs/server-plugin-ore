@@ -1,0 +1,13 @@
+apply plugin: 'java'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    maven {
+        url "http://dl.bintray.com/konstructs/maven"
+    }
+}
+
+dependencies {
+    compile group: 'org.konstructs', name: 'konstructs-server-api', version: '0.1.16'
+}
