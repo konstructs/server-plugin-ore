@@ -66,14 +66,11 @@ public class Ore extends KonstructsActor {
     }
 
     @Override
-    public void onBlockUpdateEvent(BlockUpdateEvent event) {
-        for(Map.Entry<Position, BlockUpdate> p: event.getUpdatedBlocks().entrySet()) {
-            if(p.getValue().getBefore().isType(config.getSpawnsIn()) &&
-               random.nextInt(10000) <= config.getProbability()) {
-                tryToSpawnOre(p.getKey());
-                /* Only spawn ones per update event */
-                return;
-            }
+    public void onReceive(Object message) {
+        if(message instanceof SpawnVein) {
+            tryToSpawnOre(((SpawnVein)message).getPosition());
+        } else {
+            super.onReceive(message); // Handle konstructs messages
         }
     }
 
