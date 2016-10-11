@@ -53,12 +53,13 @@ public class OrePlugin extends KonstructsActor {
                 ores.put(config.getSpawnsIn(), entries);
             }
         }
+
     }
 
     @Override
     public void onBlockUpdateEvent(BlockUpdateEvent event) {
         for(Map.Entry<Position, BlockUpdate> p: event.getUpdatedBlocks().entrySet()) {
-            List<OreEntry> entries = ores.get(p.getValue().getBefore());
+            List<OreEntry> entries = ores.get(p.getValue().getBefore().getType());
             if(entries != null) {
                 int total = 0;
                 for(OreEntry entry: entries) {
@@ -66,12 +67,14 @@ public class OrePlugin extends KonstructsActor {
                 }
                 int selected = random.nextInt(total);
                 int sum = 0;
+
                 for(OreEntry entry: entries) {
                     OreConfig config = entry.getConfig();
                     sum += config.getProbability();
-                    if(sum < selected) {
-                        if(random.nextInt(10000) <= config.getProbability())
+                    if(selected < sum) {
+                        if(random.nextInt(10000) <= config.getProbability()) {
                             entry.getActor().tell(new SpawnVein(p.getKey()), getSelf());
+                        }
                         return;
                     }
                 }

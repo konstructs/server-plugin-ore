@@ -4,6 +4,7 @@ import com.typesafe.config.Config;
 import konstructs.api.BlockTypeId;
 
 public class OreConfig {
+    private final static int MIN_OFFSET = 3;
     private final static String SPAWNS_IN_KEY = "spawns-in";
     private final static String STONE_RADIUS_KEY = "radius";
     private final static String VEIN_GENERATIONS_KEY = "generations";
@@ -25,7 +26,9 @@ public class OreConfig {
         this.generations = config.getInt(VEIN_GENERATIONS_KEY);
         this.probability = config.getInt(VEIN_SPAWN_PROBABILITY_KEY);
         this.maxDistance = config.getInt(MAX_DISTANCE_KEY);
-        this.minDistance = radius + 1;
+        this.minDistance = radius + MIN_OFFSET;
+        if(minDistance >= maxDistance)
+            throw new IllegalArgumentException("Max distance must be greater than radius + " + MIN_OFFSET);
     }
 
     public BlockTypeId getOre() {

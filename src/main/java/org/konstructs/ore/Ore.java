@@ -56,10 +56,16 @@ public class Ore extends KonstructsActor {
 
     @Override
     public void onBoxShapeQueryResult(BoxShapeQueryResult result) {
+        int numberOfOffendingBlocks = 0;
+        int rSquare = config.getRadius() * config.getRadius();
         for(BlockTypeId block: result.getBlocks()) {
             if(!(block.equals(config.getSpawnsIn()) || block.equals(config.getOre()))) {
-                /* Failed, box must be solidly of type "spawns in" or the ore itself*/
-                return;
+                numberOfOffendingBlocks += 1;
+                /* Allow some offending blocks, based on the square of the radius */
+                if(numberOfOffendingBlocks > rSquare) {
+                    /* Failed, box must have enough blocks of the correct type */
+                    return;
+                }
             }
         }
         growVein(((BoxAround)result.getBox()).getCenter());
@@ -87,7 +93,7 @@ public class Ore extends KonstructsActor {
     }
 
     private static LSystem getLSystem() {
-        /* Rules that randomly turns */
+        /* Rules that randomly turns the vein direction while increasing it */
         ProbabilisticProduction veinDirections[] = {
             new ProbabilisticProduction(12, "a&a"),
             new ProbabilisticProduction(12, "a^a"),
