@@ -29,25 +29,18 @@ public class Ore extends KonstructsActor {
     }
 
     private int randomDistance() {
-        int r = random.nextInt(config.getMaxDistance() - config.getMinDistance());
-
-        if(r>=0) {
-            return r + config.getMinDistance();
-        } else {
-            return r - config.getMinDistance();
-        }
+        return config.getMinDistance() +
+            random.nextInt(config.getMaxDistance() - config.getMinDistance());
     }
 
     private void tryToSpawnOre(Position pos) {
-        Position growthPos = pos
-            .addX(randomDistance())
-            .addY(randomDistance())
-            .addZ(randomDistance());
+        Position growthPos = pos.add(Direction.getRandom().getVector().multiply(randomDistance()));
         BoxAround box = new BoxAround(growthPos, radius);
         boxShapeQuery(box);
     }
 
     private void growVein(Position start) {
+        System.out.println("Grow vein: " + start + " " + config.getOre());
         String vein = "a";
         for(int i = 0;i < config.getGenerations(); i++)
             vein = SYSTEM.iterate(vein);
