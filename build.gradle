@@ -1,11 +1,14 @@
 apply plugin: 'java'
 
 repositories {
-    mavenLocal()
     mavenCentral()
     maven {
         url "http://dl.bintray.com/konstructs/maven"
     }
+}
+
+compileJava {
+    sourceCompatibility = 1.7
 }
 
 dependencies {

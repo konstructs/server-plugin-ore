@@ -3,7 +3,7 @@ Generates ore veins
 
 ## Add your own ore
 Other plugins can register ore blocks with this plugin by extending its configuration:
-´´´
+```
 konstructs {
   ...
   org/konstructs/ore.ores {
@@ -38,8 +38,7 @@ konstructs {
   }
   ...
 }
-´´´
-
+```
 ## Design notes
 
 The L-System can outgrow the radius. A worst case scenario for vein growth is a straight line.
