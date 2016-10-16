@@ -40,7 +40,6 @@ public class Ore extends KonstructsActor {
     }
 
     private void growVein(Position start) {
-        System.out.println("Grow vein: " + start + " " + config.getOre());
         String vein = "a";
         for(int i = 0;i < config.getGenerations(); i++)
             vein = SYSTEM.iterate(vein);
