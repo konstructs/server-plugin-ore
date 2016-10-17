@@ -12,5 +12,5 @@ compileJava {
 }
 
 dependencies {
-    compile group: 'org.konstructs', name: 'konstructs-server-api', version: '0.1.16'
+    compile group: 'org.konstructs', name: 'konstructs-server-api', version: '0.1.17'
 }
