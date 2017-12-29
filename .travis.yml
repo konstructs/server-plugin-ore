@@ -5,6 +5,7 @@ jdk:
   - oraclejdk8
 
 deploy:
+  skip_cleanup: true
   provider: releases
   api_key:
     secure: VOCxa0Utqf50mBqakzYOFM08gp9iF85WcPa+VSz8tExzdMB+Wsw7xkbED1wh/NWl02KQVSqA27fq/8jA45kUIjekFjXz+/1Jj/APyFgTccH3cMc6km00FBXoVHRh+fZIEQit1V5kDqtlE6ffXiU/O3xLKq24o+nEWg4+Z2qhSQLIiEucV8I2aTKYw5mW2r3acI/B2TmaaxfRq9bCkf3Et0xI6si4Y2S5zR/YVFYqNn8P8v/IGl5a8HFR/3MUHdL/BKrCl/RFg2QLt0ma8hQHP20r3deJtVQNJxPkO3/Cx6Fu/Pj/2QcPPZYykYLLXiT1le/NxUzFr9B+NXIrmlJpn3bVRDmZmjqQA7T0z7xeHE+1rJ+amjAy0em5ClA2qo51ExNNwIMwpKzmrcwnQFp3AHON+Oy2iSK1DZa2X3ngub5hN4fqiEf+6krT3MfwqcTb/25OJ8sVIog3YB6qiuVG/PArl7CUWaeGHeSuXiphgdxs7VgW1Fi1AdvHNZJGItEVwCvGwLJT9aDqcpJ/CUGWS8bGt3k/oQ3pi1N9E+uALs/nxIYoTERjIKFhoftnZjFJ2PdGYRR62VbVOCDs6V17N0EErRjFbMnn0q1b76G+9LQUpNDG+vRrmKZcYqD5HyX+fFm6EjnSAnhqZqP4mVji1QoRwPq9NjAGMtUVieJK9ZM=
